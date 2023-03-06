@@ -4,10 +4,14 @@ import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
+ <!-- favicon -->
+ <link rel="shortcut icon" href="{{ asset('../../../public/favicon.ico') }}" >
+ <link rel="icon" type="image/png" href="{{ asset('../../../public/favicon-16x16.png') }}">
+ 
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-50">
         <div>
             <Link href="/">
-                <ApplicationLogo class="w-20 h-20 fill-current text-blue-500" />
+               <img  class="object-scale-down h-25 w-28 ..." src="../../../public/img/stock_managente-removebg-preview.png" alt="">
             </Link>
         </div>
 

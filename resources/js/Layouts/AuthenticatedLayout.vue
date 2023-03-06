@@ -11,9 +11,13 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
+    <!-- favicon-->
+    <link rel="shortcut icon"  sizes="114x114" type='image/x-icon' href="{{ asset('../../../public/favicon.ico') }}" >
+   <link rel="icon"  sizes="114x114" type="image/png" href="{{ asset('../../../public/favicon-16x16.png') }}">
+
     <div>
         <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+            <nav class="bg-white border-b border-gray-100 sticky">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -21,17 +25,76 @@ const showingNavigationDropdown = ref(false);
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
                                 <Link :href="route('dashboard')">
-                                    <ApplicationLogo
-                                        class="block h-9 w-auto fill-current text-gray-800"
-                                    />
+                                    <img class="object-scale-down h-15 w-16 ..." src="../../../public/img/stock_managente-removebg-preview.png" alt="">
                                 </Link>
                             </div>
+
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink>
+                                <NavLink  :href="route('products')" :active="route().current('products')">
+                                    Products
+                                </NavLink>
+
+                                <Dropdown width="46" >
+                                    <template #trigger>
+                                        <span class="inline-flex rounded-md">
+                                            <button type="button" class="inline-flex items-center pt-6  border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                                Stock
+                                                <svg
+                                                    class="ml-2 -mr-0.5 h-4 w-4"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20"
+                                                    fill="currentColor"
+                                                >
+                                                    <path
+                                                        fill-rule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd"
+                                                    />
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </template>
+
+                                    <template #content>
+                                        <DropdownLink :href="route('stock')" > stock </DropdownLink>
+                                        <DropdownLink :href="route('entries')" >entries</DropdownLink>
+                                        <DropdownLink :href="route('sales')" >sales</DropdownLink>
+
+                                    </template>
+                                </Dropdown>
+                                <Dropdown width="46">
+                                    <template #trigger>
+                                        <span class="inline-flex rounded-md">
+                                            <button type="button" class="inline-flex items-center pt-6  border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                                Administration
+                                                <svg
+                                                    class="ml-2 -mr-0.5 h-4 w-4"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 20 20"
+                                                    fill="currentColor"
+                                                >
+                                                    <path
+                                                        fill-rule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd"
+                                                    />
+                                                </svg>
+                                            </button>
+                                        </span>
+                                    </template>
+
+                                    <template #content>
+                                        <DropdownLink :href="route('clients')" >clients</DropdownLink>
+                                        <DropdownLink :href="route('users')" >users</DropdownLink>
+                                    </template>
+                                </Dropdown>
+
                             </div>
+
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -114,8 +177,38 @@ const showingNavigationDropdown = ref(false);
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
                         </ResponsiveNavLink>
-                    </div>
+                        <ResponsiveNavLink :href="route('products')" :active="route().current('products')" >
+                            Products
+                        </ResponsiveNavLink>
 
+                    </div>
+                    <!-- Responsive stock dropdown -->
+                    <div class="pt-4 pb-1 border-t border-gray-200">
+                        <div class="px-4">
+                            <div class="font-medium text-base text-gray-800">
+                                Stock
+                            </div>
+                        </div>
+
+                        <div class="mt-3 space-y-1">
+                            <ResponsiveNavLink :href="route('stock')"> stock </ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('entries')" >entries</ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('sales')" >sales</ResponsiveNavLink>
+                        </div>
+                    </div>
+                    <!-- Responsive administration dropdown -->
+                    <div class="pt-4 pb-1 border-t border-gray-200">
+                        <div class="px-4">
+                            <div class="font-medium text-base text-gray-800">
+                                Administration
+                            </div>
+                        </div>
+
+                        <div class="mt-3 space-y-1">
+                            <ResponsiveNavLink :href="route('clients')" >clients</ResponsiveNavLink>
+                            <ResponsiveNavLink :href="route('users')" >users</ResponsiveNavLink>
+                        </div>
+                    </div>
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">
                         <div class="px-4">
@@ -132,15 +225,17 @@ const showingNavigationDropdown = ref(false);
                             </ResponsiveNavLink>
                         </div>
                     </div>
+
+
                 </div>
             </nav>
 
             <!-- Page Heading -->
-            <header class="bg-white shadow" v-if="$slots.header">
+            <!-- <header class="bg-white shadow" v-if="$slots.header">
                 <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                     <slot name="header" />
                 </div>
-            </header>
+            </header> -->
 
             <!-- Page Content -->
             <main>

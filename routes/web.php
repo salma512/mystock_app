@@ -16,18 +16,47 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
+Route::redirect('/', 'login');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/products', function () {
+    return Inertia::render('Products');
+})->middleware(['auth', 'verified'])->name('products');
+
+Route::get('/stock', function () {
+    return Inertia::render('Stock');
+})->middleware(['auth', 'verified'])->name('stock');
+
+Route::get('/entries', function () {
+    return Inertia::render('Entries');
+})->middleware(['auth', 'verified'])->name('entries');
+
+Route::get('/sales', function () {
+    return Inertia::render('Sales');
+})->middleware(['auth', 'verified'])->name('sales');
+
+Route::get('/administration', function () {
+    return Inertia::render('Administration');
+})->middleware(['auth', 'verified'])->name('administration');
+
+Route::get('/clients', function () {
+    return Inertia::render('Clients');
+})->middleware(['auth', 'verified'])->name('clients');
+
+Route::get('/users', function () {
+    return Inertia::render('Users');
+})->middleware(['auth', 'verified'])->name('users');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,3 +65,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+

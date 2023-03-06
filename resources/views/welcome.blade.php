@@ -4,10 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title></title>
 
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+        <!-- favicon -->
+    <link rel="shortcut icon" href="{{ asset('../../../public/favicon.ico') }}">
+    <link rel="icon" type="image/png" href="{{ asset('../../../public/favicon-16x16.png') }}">
 
         <!-- Styles -->
         <style>

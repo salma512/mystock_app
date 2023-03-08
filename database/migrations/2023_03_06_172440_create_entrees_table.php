@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('entrees', function (Blueprint $table) {
             $table->id();
             $table->string('nom_produit');
-            $table->int('quantite');
+            $table->integer('quantite');
    	        $table->string('categorie_produit');
             $table->date('date_entree');
             $table->timestamps();

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nom_produit');
    	        $table->date('date_entree');
             $table->date('date_sortie');
-            $table->int('quantite');
+            $table->integer('quantite');
             $table->timestamps();
         });
     }
